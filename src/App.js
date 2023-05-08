@@ -1,11 +1,20 @@
-import './App.css';
+import React, { useState } from 'react';
+import CreateForm from './CreateForm';
+import FormInputValuesShow from './FormInputValuesShow';
 
-function App() {
+const App = () => {
+  const [formData, setFormData] = useState(null);
+
+  const handleFormSubmit = (data) => {
+    setFormData(data);
+  };
+
   return (
-    <div className="App">
-                  <h1 style={{background: "red"}}>muruganantham</h1>
+    <div>
+      <CreateForm onSubmit={handleFormSubmit} />
+      {formData && <FormInputValuesShow formData={formData} />}
     </div>
   );
-}
+};
 
 export default App;
